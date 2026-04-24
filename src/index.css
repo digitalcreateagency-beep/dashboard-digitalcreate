@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+body { background: #0A0820; font-family: 'DM Sans', sans-serif; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#6B3FE7, #C040B8); border-radius: 4px; }
+
+/* Paleta DigitalCreate */
+:root {
+  --dc-purple: #6B3FE7;
+  --dc-magenta: #C040B8;
+  --dc-cyan: #00D4FF;
+  --dc-dark: #0A0820;
+  --dc-card: #0E0C2E;
+  --dc-border: rgba(107, 63, 231, 0.18);
+}
+
+/* ── PDF / Print styles ── */
+.print-show { display: none !important; }
+
+@media print {
+  @page { margin: 15mm 12mm; size: A4; }
+
+  body {
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Torna tudo invisível mas mantém o layout para #print-report funcionar */
+  body { visibility: hidden; }
+
+  /* Mostra apenas #print-report e seus filhos */
+  #print-report, #print-report * {
+    visibility: visible !important;
+  }
+
+  #print-report {
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    padding: 32px !important;
+    box-sizing: border-box !important;
+  }
+}
